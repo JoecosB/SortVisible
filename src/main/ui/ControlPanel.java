@@ -21,6 +21,7 @@ public class ControlPanel extends JPanel {
         comboBox.addItem("BubbleSort");
         comboBox.addItem("QuickSort");
         comboBox.addItem("SelectionSort");
+        comboBox.addItem("MergeSort");
 
         // 建立“开始”按钮
         JButton startBtn = new JButton("Start/Resume");
@@ -33,6 +34,7 @@ public class ControlPanel extends JPanel {
                     public void actionPerformed(ActionEvent e) {
                         if (controller.model.is_sorted()) {
                             timer.stop();
+                            controller.beep_cleanup();
                         } else {
                             controller.step();
                             sortPanel.repaint();
@@ -50,6 +52,7 @@ public class ControlPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if(timer!=null) {
                     timer.stop();
+                    controller.beep_cleanup();
                 }
             }
         });
